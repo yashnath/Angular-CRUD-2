@@ -1,0 +1,56 @@
+<div class="row">
+
+    <div class="column"style="background-color:#1B4994">
+  <span>
+    <img class="ig"  src = "assets/Image 2.png">
+  </span>
+          <span>
+            <h5 class="h5">Invoice Approval Engine</h5>
+          </span> 
+      <div style="white-space:pre-wrap; padding-left:100px;" >
+        <p class="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
+       <p class="p">tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim,</p>
+        <p class="p">veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea</p>
+        <p class="p" style="padding-left: 150px;">
+          commodo consequat
+        </p>
+    </div>
+  
+    </div>
+  
+    <div class="column"style="background-color:white">
+     
+  
+    <img class="ig1"  src = "assets/Image 1.png"> <br>
+    <form [formGroup]="base"(ngSubmit)="login(base.value)" >
+  
+    <label class="label">User ID</label><br>
+  
+  <input type="text" class="input" placeholder="xyz@gmail.com" formControlName="UserId"><br>
+  <span style="color: red;padding-left: 50px;" *ngIf="idValidator && idValidator.invalid && idValidator.touched"> <!--idvalidator must be function created in app.componen.ts-->
+    Username is required.
+  </span>
+  <br>
+  <label class="label">Password</label><br>
+  <input [type]="showPassword ? 'text' : 'password'" class="input" placeholder="**************"id="id_password" formControlName="Password" >
+  <mat-icon matSuffix class="mat" (click)="togglePasswordVisibility()">visibility</mat-icon> <br>
+  <span style="color: red; padding-left: 50px;" *ngIf="passwordValidator && passwordValidator.invalid && passwordValidator.touched"> 
+  Password is required.
+  </span>
+  
+  <br><br>
+  
+  
+  <button class="button" [disabled]="base.invalid">Login
+    <ng-template [ngIf]="Rflag==true">
+      <a routerLink="comp"></a>
+      <!-- <router-outlet></router-outlet> -->
+    </ng-template>
+  
+  </button>
+  </form>
+  
+    </div>
+  
+  </div>
+  

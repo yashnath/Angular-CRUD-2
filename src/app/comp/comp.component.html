@@ -1,0 +1,158 @@
+
+<!---------------------------------------GET---------------------------------------------------> 
+
+    <h3>Employee Details</h3> <br>
+    <table class="tab">
+  <tr>
+    <th class="th">
+      ID
+    </th>
+    <th class="th">
+      name
+    </th>
+  
+    <th class="th">
+      Age
+    </th>
+  </tr>
+   <tr *ngFor="let a of data3">
+  <td class="td">{{a.id}}</td>
+  <td class="td">{{a.Name}}</td>
+  <td class="td">{{a.age}}</td>
+   </tr>
+  
+    </table> <br>
+ 
+  
+  <button (click)="show()">POST</button> &nbsp;
+  <button (click)="show1()" >Patch</button>&nbsp;
+  <button (click)="show2()" >Put</button>&nbsp;
+  <button (click)="show3()" >Delete</button><br>
+  
+  <!---------------------------------------POST---------------------------------------------------> 
+  
+  
+  <form *ngIf="display" [formGroup]="base" (ngSubmit)="add(base.value)"><br>
+    <label>Name</label>&nbsp;&nbsp;
+    <input type="text" placeholder="Enter the Name" formControlName="Name"> <br>
+    <span style="color: red;" *ngIf="userValidator && userValidator.invalid && userValidator.touched"> <!--uservalidator must be function created in app.componen.ts-->
+      Mandatory field can not be left empty.
+    </span><br>
+  
+    <label>age</label>&nbsp;&nbsp;
+    <input type="text" placeholder="Enter the age" formControlName="age"> <br><br>
+    <span style="color: red;" *ngIf="ageValidator && ageValidator.invalid && ageValidator.touched"> <!--agevalidator must be function created in app.componen.ts-->
+      Mandatory field can not be left empty.
+    </span><br>
+    <button [disabled]="base.invalid">Add Member</button>&nbsp;
+    <button (click)="toggle()">Cancel</button>
+  </form>
+  
+  <!---------------------------------------PUT------------------------------------------------------------> 
+    <form *ngIf="display2" [formGroup]="base1" (ngSubmit)="getS(base1.value)"><br>
+    <label>ID</label>&nbsp;&nbsp;
+    <input type="text" placeholder="Enter the ID" formControlName="id"> <br>
+    <span style="color: red;" *ngIf="idValidator && idValidator.invalid && idValidator.touched"> <!--idvalidator must be function created in app.componen.ts-->
+      Mandatory field can not be left empty.
+    </span><br><br>
+    <button [disabled]="base1.invalid">Fetch</button>&nbsp;
+    <button (click)="toggle2()">Cancel</button> <br><br>
+  </form >
+   
+  
+  <div *ngIf="display2">
+    <ng-template [ngIf]="flag=== 'cancel'">
+      <p> </p>
+        </ng-template>
+    
+        
+        <ng-template [ngIf]="flag=== 'yes'">
+  
+       <form #sub1="ngForm"(ngSubmit)="puUpdate(sub1.value)">
+         
+      
+        <label>ID</label>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" [(ngModel)]= val1  name="id" > <br>
+       
+            <label>name</label>&nbsp;&nbsp;
+       <input type="text" [(ngModel)]= val2 name="Name"  > <br>
+      
+       <label>age</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <input type="text" [(ngModel)]= val3 name="age" > <br>
+  
+       <button>Update</button>
+       
+          </form> 
+  
+        </ng-template>
+      
+        <ng-template [ngIf]="flag=== 'no'">
+          <p>No data Found</p>
+        </ng-template>
+      
+  </div>
+  <!---------------------------------------PATCh------------------------------------------------------------> 
+  
+  <form *ngIf="display1" [formGroup]="base1" (ngSubmit)="getS(base1.value)"><br>
+    <label>ID</label>&nbsp;&nbsp;
+    <input type="text" placeholder="Enter the ID" formControlName="id"> <br>
+    <span style="color: red;" *ngIf="idValidator && idValidator.invalid && idValidator.touched"> <!--idvalidator must be function created in app.componen.ts-->
+      Mandatory field can not be left empty.
+    </span><br><br>
+    <button [disabled]="base1.invalid">Fetch</button>&nbsp;
+    <button (click)="toggle1()">Cancel</button> <br><br>
+  </form >
+   
+  
+  <div *ngIf="display1">
+    <ng-template [ngIf]="flag=== 'cancel'">
+      <p> </p>
+        </ng-template>
+    
+        
+        <ng-template [ngIf]="flag=== 'yes'">
+  
+       <form #sub1="ngForm"(ngSubmit)="paUpdate(sub1.value)">
+         
+      
+        <label>ID</label>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" [(ngModel)]= val1  name="id" > <br>
+       
+            <label>name</label>&nbsp;&nbsp;
+       <input type="text" [(ngModel)]= val2 name="Name"  > <br>
+      
+       <label>age</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <input type="text" [(ngModel)]= val3 name="age" > <br>
+  
+       <button>Update</button>
+       
+          </form> 
+  
+        </ng-template>
+      
+        <ng-template [ngIf]="flag=== 'no'">
+          <p>No data Found</p>
+        </ng-template>
+      
+  </div>
+   
+  
+  <!---------------------------------------Delete------------------------------------------------------------> 
+  <form *ngIf="display3" [formGroup]="base1" (ngSubmit)="Adelete(base1.value)"><br> 
+    <label>ID</label>&nbsp;&nbsp;
+    <input type="text" placeholder="Enter the ID" formControlName="id"> <br>
+    <span style="color: red;" *ngIf="idValidator && idValidator.invalid && idValidator.touched"> <!--idvalidator must be function created in app.componen.ts-->
+      Mandatory field can not be left empty.
+    </span><br><br>
+    <button [disabled]="base1.invalid">Erase</button>&nbsp;
+    <button (click)="toggle3()">Cancel</button> <br><br>
+  </form>
+  
+  <div *ngIf="display3">
+  
+    
+  
+    <ng-template [ngIf]="flag=== 'no'">
+      <p>No Data Found</p>
+    </ng-template>
+  </div>
